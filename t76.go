@@ -15,107 +15,67 @@ import "fmt"
 如果 S 中存在这样的子串，我们保证它是唯一的答案。
 */
 
-// Index 记录匹配字符出现的位置
-type Index struct {
-	Idx  int
-	Data byte
-}
-
 func minWindow(s string, t string) string {
-	l1, l2 := len(s), len(t)
-	if l1 == 0 || l2 == 0 {
+	lS, lT := len(s), len(t)
+	if lT == 0 {
 		return ""
 	}
 
-	// 目标map匹配次数，当前窗口已匹配的字符次数，当前窗口字符是否已满足匹配要求
-	u, found, match := make(map[byte]int, l2), make(map[byte]int), make(map[byte]bool)
-	for i := 0; i < l2; i++ {
-		count := u[t[i]]
-		u[t[i]] = count + 1
+	// 当前左指针，当前右指针；最小窗口左指针，最小窗口右指针(默认超过长度上限)
+	left, right, minLeft, minRight := 0, 0, 0, lS
+	// 目标匹配次数map, 当前已完成匹配的字符数, 目标匹配字符数
+	u, found, target := make(map[byte]int), 0, 0
+	for i := 0; i < lT; i++ {
+		if _, ok := u[t[i]]; ok {
+			u[t[i]] += 1
+		} else {
+			u[t[i]] = 1
+			target += 1
+		}
 	}
 
-	idl, j := make([]*Index, 0, l2), 0
-	// 当前窗口左指针, 长度；最小窗口左指针，长度
-	left, currentLen, begin, minLen := 0, 0, 0, 0
-	for i := 0; i < l1; i++ {
-		currentLen++
-		if _, ok := u[s[i]]; ok {
-			count := found[s[i]]
-			found[s[i]] = count + 1
-			if found[s[i]] >= u[s[i]] {
-				match[s[i]] = true
+	for ; right < lS; right++ {
+		if _, ok := u[s[right]]; ok {
+			u[s[right]] -= 1
+			// 刚好完成当前字符匹配
+			if u[s[right]] == 0 {
+				found += 1
 			}
 
-			idl = append(idl, &Index{i, s[i]})
-		}
+			// 完成匹配，做窗口滑动处理(右移left)
+			if found >= target {
+				for ; left <= right; left++ {
+					if _, ok := u[s[left]]; ok {
+						// 最小窗口变动
+						if right-left <= minRight-minLeft {
+							minLeft = left
+							minRight = right
+						}
 
-		// 全找到了
-		for len(match) == len(u) {
-			idx, data := idl[j].Idx, idl[j].Data
-			if minLen == 0 || currentLen <= minLen {
-				// 最小窗口左指针指向第一个匹配的
-				begin = idx
-				minLen = currentLen - (idx - left)
-			}
-
-			// 窗口左指针右移
-			j++
-			// 只要求匹配一次
-			if j >= len(idl) {
-				return t
-			}
-
-			currentLen -= idl[j].Idx - left
-			left = idl[j].Idx
-
-			// 匹配次数自减
-			found[data]--
-			if found[data] < u[data] {
-				delete(match, data)
+						// 去掉当前字符
+						u[s[left]] += 1
+						// 当前字符数已不符合匹配要求
+						if u[s[left]] > 0 {
+							found -= 1
+							left++
+							break
+						}
+					}
+				}
 			}
 		}
-
 	}
 
-	// 没有找全
-	if minLen == 0 {
-		return ""
+	// 匹配上了
+	if minRight != lS {
+		return s[minLeft : minRight+1]
 	}
 
-	return s[begin : begin+minLen]
-}
-
-func minWindow1(s string, t string) string {
-	if len(s) < len(t) {
-		return ""
-	}
-	hash := make([]int, 256)
-	for i := 0; i < len(t); i++ {
-		hash[t[i]]++
-	}
-
-	l, count, max, results := 0, len(t), len(s)+1, ""
-	for r := 0; r < len(s); r++ {
-		hash[s[r]]--
-		if hash[s[r]] >= 0 {
-			count--
-		}
-
-		for l < r && hash[s[l]] < 0 {
-			hash[s[l]]++
-			l++
-		}
-
-		if count == 0 && max > r-l+1 {
-			max = r - l + 1
-			results = s[l : r+1]
-		}
-	}
-
-	return results
+	return ""
 }
 
 func main() {
 	fmt.Println(minWindow("ADOBECODEBANC", "ABC"))
 	fmt.Println(minWindow("AA", "AA"))
+	fmt.Println(minWindow("ABC", "AC"))
 }
