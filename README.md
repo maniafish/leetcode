@@ -39,6 +39,12 @@ Solving leetcode question with golang
 
 * [t206. 反转链表](./t206.go)
 * [t234. 回文链表](./t234.go)
+* [t92. 反转链表 II](./t92.go)
+* [t61. 旋转链表](./t61.go)
+
+## 7. 数字规律
+
+* [t6. Z 字形变换](./t6.go)
 
 ---
 
