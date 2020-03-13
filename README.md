@@ -11,6 +11,7 @@ Solving leetcode question with golang
 ## 2. 数字进位问题
 
 * [t2. 两数相加](./t2.go)
+* [t8. 字符串转换整数 (atoi)](./t8.go)
 * [t43. 字符串相乘](./t43.go)
 * [t66. 加一](./t66.go)
 * [t67. 二进制求和](./t67.go)
@@ -53,7 +54,7 @@ Solving leetcode question with golang
 
 ## TODO
 
-* [t8. 字符串转换整数 (atoi)](./t8.go)
+* [t11. 盛最多水的容器](./t11.go)
 
 ---
 

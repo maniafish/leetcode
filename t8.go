@@ -47,5 +47,44 @@ package main
 */
 
 func myAtoi(str string) int {
+	res, factor, MAX := 0, 0, 2147483647
+	for _, v := range str {
+		switch v {
+		case ' ':
+			if factor == 0 {
+				continue
+			} else {
+				return factor * res
+			}
+		case '-':
+			if factor == 0 {
+				factor = -1
+			} else {
+				return factor * res
+			}
+		case '+':
+			if factor == 0 {
+				factor = 1
+			} else {
+				return factor * res
+			}
+		case '0', '1', '2', '3', '4', '5', '6', '7', '8', '9':
+			res = res*10 + int(v) - 48
+			if factor == 0 {
+				factor = 1
+			} else if factor > 0 {
+				if res > MAX {
+					return MAX
+				}
+			} else {
+				if res > MAX+1 {
+					return (MAX + 1) * -1
+				}
+			}
+		default:
+			return factor * res
+		}
+	}
 
+	return factor * res
 }
