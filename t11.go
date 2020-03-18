@@ -9,5 +9,24 @@ package main
 */
 
 func maxArea(height []int) int {
+	// 双指针法，从两头往中间走，每次将两头中的短板位置指针往中间走一格，最终取面积最大值
+	left, right, res := 0, len(height)-1, 0
+	for left < right {
+		min := height[left]
+		if height[right] < min {
+			min = height[right]
+			// 右指针左移
+			right -= 1
+		} else {
+			// 左指针右移
+			left += 1
+		}
 
+		s := min * (right - left + 1)
+		if s > res {
+			res = s
+		}
+	}
+
+	return res
 }
