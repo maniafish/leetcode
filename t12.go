@@ -1,15 +1,27 @@
 package main
 
+import (
+	"bytes"
+	"fmt"
+	"strings"
+)
+
 /*
 罗马数字包含以下七种字符： I， V， X， L，C，D 和 M。
 
 字符          数值
 I             1
+IV            4
 V             5
+IX            9
 X             10
+XL            40
 L             50
+XC            90
 C             100
+CD            400
 D             500
+CM            900
 M             1000
 例如， 罗马数字 2 写做 II ，即为两个并列的 1。12 写做 XII ，即为 X + II 。 27 写做  XXVII, 即为 XX + V + II 。
 
@@ -44,6 +56,45 @@ C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。
 解释: M = 1000, CM = 900, XC = 90, IV = 4.
 */
 
-func intToRoman(num int) string {
+type Roman struct {
+	Num  int
+	Char string
+}
 
+func intToRoman(num int) string {
+	r := []Roman{
+		Roman{1000, "M"},
+		Roman{900, "CM"},
+		Roman{500, "D"},
+		Roman{400, "CD"},
+		Roman{100, "C"},
+		Roman{90, "XC"},
+		Roman{50, "L"},
+		Roman{40, "XL"},
+		Roman{10, "X"},
+		Roman{9, "IX"},
+		Roman{5, "V"},
+	}
+
+	res := bytes.Buffer{}
+	for _, v := range r {
+		n := num / v.Num
+		if n > 0 {
+			res.WriteString(strings.Repeat(v.Char, n))
+			num = num % v.Num
+		}
+	}
+
+	// IV和I是最终的边界条件
+	if num == 4 {
+		res.WriteString("IV")
+	} else {
+		res.WriteString(strings.Repeat("I", num))
+	}
+
+	return res.String()
+}
+
+func main() {
+	fmt.Println(intToRoman(1994))
 }

@@ -52,10 +52,14 @@ Solving leetcode question with golang
 ## 8. 简单数字处理
 
 * [t7. 整数反转](./t7.go)
+* [t12. 整数转罗马数字](./t12.go)
+* [t13. 罗马数字转整数](./t13.go)
 
 ## TODO
 
-* [t12. 整数转罗马数字](./t12.go)
+* [t343. 整数拆分](./t343.go)
+
+
 
 ---
 
