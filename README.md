@@ -29,6 +29,7 @@ Solving leetcode question with golang
 * [t5. 最长回文子串](./t5.go)
 * [t516. 最长回文子序列](./t516.go)
 * [t647. 回文子串](./t647.go)
+* [t97. 交错字符串](./t97.go)
 
 ## 5. 简单回文问题
 
@@ -44,6 +45,7 @@ Solving leetcode question with golang
 * [t61. 旋转链表](./t61.go)
 * [t725. 分隔链表](./t725.go)
 * [t11. 盛最多水的容器](./t11.go)
+* [t97. 交错字符串](./t97.go)
 
 ## 7. 数字规律
 
@@ -61,7 +63,7 @@ Solving leetcode question with golang
 
 ## TODO
 
-* [t97. 交错字符串](./t97.go)
+* [64. 最小路径和](./t64.go)
 
 ---
 
