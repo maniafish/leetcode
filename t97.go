@@ -22,14 +22,15 @@ if dp[i-1][j-1] && s1[i-1] = s3[i+j-1]{dp[i][j] = true}
 */
 
 func isInterleave(s1 string, s2 string, s3 string) bool {
-	dp, l1, l2, l3 := make(map[int]map[int]bool), len(s1), len(s2), len(s3)
+	l1, l2, l3 := len(s1), len(s2), len(s3)
 	if l1+l2 != l3 {
 		return false
 	}
 
+	dp := make([][]bool, l1+1)
 	// 初始化dp，dp[i][0]表示纯s1是否能组成s3前缀，dp[0][j]表示纯s2是否能组成s3前缀
 	for i := 0; i < l1+1; i++ {
-		dp[i] = make(map[int]bool, l2+1)
+		dp[i] = make([]bool, l2+1)
 		// 首位空出
 		if i == 0 {
 			dp[0][0] = true

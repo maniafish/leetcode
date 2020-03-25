@@ -30,6 +30,8 @@ Solving leetcode question with golang
 * [t516. 最长回文子序列](./t516.go)
 * [t647. 回文子串](./t647.go)
 * [t97. 交错字符串](./t97.go)
+* [64. 最小路径和](./t64.go)
+* [t62. 不同路径](./t62.go)
 
 ## 5. 简单回文问题
 
@@ -63,7 +65,7 @@ Solving leetcode question with golang
 
 ## TODO
 
-* [64. 最小路径和](./t64.go)
+* [t63. 不同路径 II](./t63.go)
 
 ---
 
