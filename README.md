@@ -32,6 +32,7 @@ Solving leetcode question with golang
 * [t97. 交错字符串](./t97.go)
 * [64. 最小路径和](./t64.go)
 * [t62. 不同路径](./t62.go)
+* [t63. 不同路径 II](./t63.go)
 
 ## 5. 简单回文问题
 
@@ -62,10 +63,15 @@ Solving leetcode question with golang
 ## 9. 贪心算法
 
 * [t343. 整数拆分](./t343.go)
+* [t55. 跳跃游戏](./t55.go)
+
+## 10. 深度优先遍历
+
+* [t980. 不同路径 III](./t980.go)
 
 ## TODO
 
-* [t63. 不同路径 II](./t63.go)
+* [t45. 跳跃游戏 II](./t45.go)
 
 ---
 

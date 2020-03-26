@@ -30,5 +30,57 @@ package main
 */
 
 func uniquePathsWithObstacles(obstacleGrid [][]int) int {
+	l1 := len(obstacleGrid)
+	if l1 < 1 {
+		return 0
+	}
 
+	l2 := len(obstacleGrid[0])
+	if l2 < 1 {
+		return 0
+	}
+
+	if obstacleGrid[0][0] > 0 || obstacleGrid[l1-1][l2-1] > 0 {
+		// 起点或终点有障碍物
+		return 0
+	}
+
+	// 动态规划矩阵，dp[i][j] = n 表示走到(i, j)共有n条路径
+	dp := make([][]int, l1)
+	for i := 0; i < l1; i++ {
+		dp[i] = make([]int, l2)
+		for j := 0; j < l2; j++ {
+			// 当前点有障碍物
+			if obstacleGrid[i][j] > 0 {
+				dp[i][j] = 0
+				continue
+			}
+
+			switch {
+			case i == 0 && j == 0:
+				// 起点
+				dp[i][j] = 1
+			case i == 0 && j > 0:
+				// 上边框，只能从左边来
+				if dp[i][j-1] == 0 {
+					// 左边没路了
+					dp[i][j] = 0
+				} else {
+					dp[i][j] = 1
+				}
+			case i > 0 && j == 0:
+				// 左边框，只能从上面来
+				if dp[i-1][j] == 0 {
+					// 上边没路了
+					dp[i][j] = 0
+				} else {
+					dp[i][j] = 1
+				}
+			default:
+				dp[i][j] = dp[i-1][j] + dp[i][j-1]
+			}
+		}
+	}
+
+	return dp[l1-1][l2-1]
 }
