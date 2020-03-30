@@ -18,6 +18,36 @@ package main
 假设你总是可以到达数组的最后一个位置。
 */
 
+/*
+贪心算法：每次都选择局部最优，最后达到全局最优
+*/
 func jump(nums []int) int {
+	// 长度, 最大步数，下一步步长
+	l, step, next := len(nums), 0, 0
+	// 不用跳
+	if l <= 1 {
+		return 0
+	}
 
+	for i := 0; i < l; i, step = i+next, step+1 {
+		// 碰0凉凉
+		if nums[i] == 0 {
+			return 0
+		}
+
+		// 当前位置的下一个位置已经到达了终点
+		if i+nums[i] >= l-1 {
+			return step + 1
+		}
+
+		// 遍历当前位置的下一个位置，选择最优位置(两步之和最大)
+		for j, max := 1, 0; j <= nums[i]; j++ {
+			if j+nums[i+j] > max {
+				next = j
+				max = j + nums[i+j]
+			}
+		}
+	}
+
+	return step
 }

@@ -50,9 +50,10 @@ Solving leetcode question with golang
 * [t11. 盛最多水的容器](./t11.go)
 * [t97. 交错字符串](./t97.go)
 
-## 7. 数字规律
+## 7. 数学归纳法
 
 * [t6. Z 字形变换](./t6.go)
+* [t343. 整数拆分](./t343.go)
 
 ## 8. 简单数字处理
 
@@ -62,8 +63,8 @@ Solving leetcode question with golang
 
 ## 9. 贪心算法
 
-* [t343. 整数拆分](./t343.go)
 * [t55. 跳跃游戏](./t55.go)
+* [t45. 跳跃游戏 II](./t45.go)
 
 ## 10. 深度优先遍历
 
@@ -71,7 +72,7 @@ Solving leetcode question with golang
 
 ## TODO
 
-* [t45. 跳跃游戏 II](./t45.go)
+* [t402. 移掉K位数字](./t402.go)
 
 ---
 
