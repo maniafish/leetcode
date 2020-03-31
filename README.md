@@ -65,6 +65,7 @@ Solving leetcode question with golang
 
 * [t55. 跳跃游戏](./t55.go)
 * [t45. 跳跃游戏 II](./t45.go)
+* [t402. 移掉K位数字](./t402.go)
 
 ## 10. 深度优先遍历
 
@@ -72,7 +73,7 @@ Solving leetcode question with golang
 
 ## TODO
 
-* [t402. 移掉K位数字](./t402.go)
+* [tt40. 最小的k个数](./tt40.go)
 
 ---
 
