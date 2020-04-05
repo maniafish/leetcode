@@ -60,6 +60,7 @@ Solving leetcode question with golang
 * [t7. 整数反转](./t7.go)
 * [t12. 整数转罗马数字](./t12.go)
 * [t13. 罗马数字转整数](./t13.go)
+* [t263. 丑数](./t263.go)
 
 ## 9. 贪心算法
 
@@ -71,9 +72,14 @@ Solving leetcode question with golang
 
 * [t980. 不同路径 III](./t980.go)
 
-## TODO
+## 11. 堆
 
 * [tt40. 最小的k个数](./tt40.go)
+* [t264. 丑数 II](./t264.go)
+
+## TODO
+
+* [t23. 合并K个排序链表](./t23.go)
 
 ---
 

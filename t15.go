@@ -23,43 +23,62 @@ import (
 	"sort"
 )
 
-type Num []int
+func threeSum(n []int) [][]int {
+	l := len(n)
+	if l < 3 {
+		return nil
+	}
 
-func (a Num) Len() int           { return len(a) }
-func (a Num) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
-func (a Num) Less(i, j int) bool { return a[i] < a[j] }
+	sort.Ints(n)
+	res := make([][]int, 0, l)
+	// 遍历数组元素，每次拿当前元素和后两个元素取sum
+	for i := 0; i < l-2; i++ {
+		// 排序过后剩下的都比i大
+		if n[i] > 0 {
+			return res
+		}
 
-func threeSum(nums []int) [][]int {
-	n := Num(nums)
-	sort.Sort(n)
-	res := make([][]int, 0, len(nums))
-	done := make(map[string]bool)
-	for i := 1; i < n.Len()-1; i++ {
-		j1, j2 := 0, n.Len()-1
-		for j1 < i && j2 > i {
-			sum := n[j1] + n[i] + n[j2]
-			if sum == 0 {
-				doneStr := fmt.Sprintf("%d%d%d", n[j1], n[i], n[j2])
-				if _, ok := done[doneStr]; !ok {
-					res = append(res, []int{n[j1], n[i], n[j2]})
-					done[doneStr] = true
+		// 去重
+		if i > 0 && n[i] == n[i-1] {
+			continue
+		}
+
+		for j1, j2 := i+1, l-1; j1 < j2; {
+			sum := n[i] + n[j1] + n[j2]
+			switch {
+			case sum == 0:
+				res = append(res, []int{n[i], n[j1], n[j2]})
+				j1, j2 = j1+1, j2-1
+				// j1继续右移并去重
+				for j1 < j2 && n[j1] == n[j1-1] {
+					j1++
 				}
-				j1 += 1
-				j2 -= 1
-				continue
-			}
-
-			if sum < 0 {
-				j1 += 1
-				continue
-			}
-
-			if sum > 0 {
-				j2 -= 1
-				continue
+				// j2继续左移并去重
+				for j1 < j2 && n[j2] == n[j2+1] {
+					j2--
+				}
+			case sum > 0:
+				// 需要缩小sum
+				j2--
+				// j2继续左移并去重
+				for j1 < j2 && n[j2] == n[j2+1] {
+					j2--
+				}
+			default:
+				// 需要增大sum
+				j1++
+				// j1继续右移并去重
+				for j1 < j2 && n[j1] == n[j1-1] {
+					j1++
+				}
 			}
 		}
 	}
 
 	return res
+}
+
+func main() {
+	fmt.Println(threeSum([]int{-1, 0, 1, 2, -1, -4}))
+	fmt.Println(threeSum([]int{-1, 0, 1, 0}))
 }

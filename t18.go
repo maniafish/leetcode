@@ -18,44 +18,57 @@ package main
   [-2,  0, 0, 2]
 ]
 */
-
 import (
 	"fmt"
 	"sort"
 )
 
-type Num []int
+func fourSum(n []int, target int) [][]int {
+	sort.Ints(n)
+	l := len(n)
+	res := make([][]int, 0, l)
+	fmt.Println(n)
+	for i := 0; i < l-3; i++ {
+		if i > 0 && n[i] == n[i-1] {
+			continue
+		}
 
-func (a Num) Len() int           { return len(a) }
-func (a Num) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
-func (a Num) Less(i, j int) bool { return a[i] < a[j] }
+		// 遍历接下来的数组元素，每次拿当前元素和后两个元素取sum
+		for j0 := i + 1; j0 < l-2; j0++ {
+			// 去重
+			if j0 > i+1 && n[j0] == n[j0-1] {
+				continue
+			}
 
-func threeSum(n Num, target, addition int) [][]int {
-	res := make([][]int, 0, 1)
-	done := make(map[string]bool)
-	for i := 1; i < len(n)-1; i++ {
-		j1, j2 := 0, len(n)-1
-		for j1 < i && j2 > i {
-			sum := n[j1] + n[i] + n[j2]
-			if sum == target {
-				doneStr := fmt.Sprintf("%d%d%d%d", addition, n[j1], n[i], n[j2])
-				if _, ok := done[doneStr]; !ok {
-					res = append(res, []int{addition, n[j1], n[i], n[j2]})
-					done[doneStr] = true
+			for j1, j2 := j0+1, l-1; j1 < j2; {
+				sum := n[j0] + n[j1] + n[j2]
+				switch {
+				case sum == target-n[i]:
+					res = append(res, []int{n[i], n[j0], n[j1], n[j2]})
+					j1, j2 = j1+1, j2-1
+					// j1继续右移并去重
+					for j1 < j2 && n[j1] == n[j1-1] {
+						j1++
+					}
+					// j2继续左移并去重
+					for j1 < j2 && n[j2] == n[j2+1] {
+						j2--
+					}
+				case sum > target-n[i]:
+					// 需要缩小sum
+					j2--
+					// j2继续左移并去重
+					for j1 < j2 && n[j2] == n[j2+1] {
+						j2--
+					}
+				default:
+					// 需要增大sum
+					j1++
+					// j1继续右移并去重
+					for j1 < j2 && n[j1] == n[j1-1] {
+						j1++
+					}
 				}
-				j1 += 1
-				j2 -= 1
-				continue
-			}
-
-			if sum < target {
-				j1 += 1
-				continue
-			}
-
-			if sum > target {
-				j2 -= 1
-				continue
 			}
 		}
 	}
@@ -63,19 +76,6 @@ func threeSum(n Num, target, addition int) [][]int {
 	return res
 }
 
-func fourSum(nums []int, target int) [][]int {
-	n := Num(nums)
-	sort.Sort(n)
-	res := make([][]int, 0, 1)
-	for i := 0; i < n.Len()-3; i++ {
-		if i > 0 && nums[i] == nums[i-1] {
-			continue
-		}
-		resTemp := threeSum(nums[i+1:], target-nums[i], nums[i])
-		if len(resTemp) > 0 {
-			res = append(res, resTemp...)
-		}
-	}
-
-	return res
+func main() {
+	fmt.Println(fourSum([]int{1, 0, -1, 0, -2, 2}, 0))
 }
