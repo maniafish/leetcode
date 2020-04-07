@@ -61,6 +61,7 @@ Solving leetcode question with golang
 * [t12. 整数转罗马数字](./t12.go)
 * [t13. 罗马数字转整数](./t13.go)
 * [t263. 丑数](./t263.go)
+* [21. 合并两个有序链表](./t21.go)
 
 ## 9. 贪心算法
 
@@ -76,10 +77,15 @@ Solving leetcode question with golang
 
 * [tt40. 最小的k个数](./tt40.go)
 * [t264. 丑数 II](./t264.go)
+* [t23. 合并K个排序链表](./t23.go)
+
+## 12. 分治法
+
+* [148. 排序链表](./t148.go)
 
 ## TODO
 
-* [t23. 合并K个排序链表](./t23.go)
+[t240. 搜索二维矩阵 II](./t240.go)
 
 ---
 
