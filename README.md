@@ -4,9 +4,9 @@ Solving leetcode question with golang
 
 ## 1. Array
 
- **Title** | **Solution** | **TimeComplexity** | **SpaceComplex**
----|---|---|---|---
-[1.两数之和](https://leetcode-cn.com/problems/two-sum/) | [t1](./array/t1.go) | O(n) | O(n)
+**Title** | **Solution** | **TimeComplexity** | **SpaceComplex**
+---|---|---|---
+[1.两数之和](https://leetcode-cn.com/problems/two-sum/) | [t1](./array/t1.go) | O(n) | O(n) 
 
 ## 2. String
 
