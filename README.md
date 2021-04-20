@@ -6,7 +6,7 @@ Solving leetcode question with golang
 
  **Title** | **Solution** | **TimeComplexity** | **SpaceComplex**
 ---|---|---|---|---
-[1.两数之和](https://leetcode-cn.com/problems/two-sum/) | | | 
+[1.两数之和](https://leetcode-cn.com/problems/two-sum/) | [t1](./array/t1.go) | O(n) | O(n)
 
 ## 2. String
 
@@ -115,3 +115,7 @@ Solving leetcode question with golang
  **Title** | **Solution** | **TimeComplexity** | **SpaceComplex**
 ---|---|---|---|---
 | | | 
+
+## Rreferences
+
+* [leetcode cookbook](https://books.halfrost.com/leetcode/ChapterOne/)
