@@ -6,8 +6,7 @@ Solving leetcode question with golang
 
 **Title** | **Solution** | **TimeComplexity** | **SpaceComplex**
 ---|---|---|---
-[1.两数之和](https://leetcode-cn.com/problems/two-sum/) | [t1](./array/t1.md) | O(n) | O(n) 
-[15.三数之和](https://leetcode-cn.com/problems/3sum/) | [t15](./array/t15.md) | TODO | 
+[1.两数之和](https://leetcode-cn.com/problems/two-sum/) | [t1](./task/t1.md) | O(n) | O(n) 
 
 ## 2. String
 
@@ -19,7 +18,8 @@ Solving leetcode question with golang
 
  **Title** | **Solution** | **TimeComplexity** | **SpaceComplex**
 ---|---|---|---
- | | | 
+[15.三数之和](https://leetcode-cn.com/problems/3sum/) | [t15](./task/t15.md) | O(n^2) | O(1)
+[18.四数之和](https://leetcode-cn.com/problems/4sum/) | [t18](./task/t18.md) | TODO | 
 
 ## 4. Linked List
 
