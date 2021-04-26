@@ -1,6 +1,3 @@
-![](./t18.png)
-
-```js
 package main
 
 import (
@@ -60,4 +57,3 @@ func fourSum(nums []int, target int) [][]int {
 
 	return result
 }
-```
