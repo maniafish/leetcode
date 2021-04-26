@@ -7,6 +7,7 @@ Solving leetcode question with golang
 **Title** | **Solution** | **TimeComplexity** | **SpaceComplex**
 ---|---|---|---
 [1.两数之和](https://leetcode-cn.com/problems/two-sum/) | [t1](./task/t1.md) | O(n) | O(n) 
+[4.寻找两个正序数组的中位数](https://leetcode-cn.com/problems/median-of-two-sorted-arrays/) | [t4](./task/t4.md) | TODO | TODO
 
 ## 2. String
 
@@ -19,7 +20,7 @@ Solving leetcode question with golang
  **Title** | **Solution** | **TimeComplexity** | **SpaceComplex**
 ---|---|---|---
 [15.三数之和](https://leetcode-cn.com/problems/3sum/) | [t15](./task/t15.md) | O(n^2) | O(1)
-[18.四数之和](https://leetcode-cn.com/problems/4sum/) | [t18](./task/t18.md) | TODO | 
+[18.四数之和](https://leetcode-cn.com/problems/4sum/) | [t18](./task/t18.md) | O(n^3) | O(1)
 
 ## 4. Linked List
 
